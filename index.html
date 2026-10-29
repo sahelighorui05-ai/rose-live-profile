@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#160c25">
+<meta name="description" content="Welcome to Rose's profile. View profile details and connect using the available contact buttons.">
+<title>Rose | Live Profile</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{color-scheme:dark}
+body{min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px;font-family:Arial,sans-serif;color:#fff;background:radial-gradient(circle at top,#49205e,#160c25 60%,#080510)}
+.card{width:100%;max-width:380px;padding:28px 22px;text-align:center;border:1px solid #ffffff24;border-radius:28px;background:linear-gradient(145deg,#ffffff16,#ffffff05);box-shadow:0 0 45px #d946ef20;animation:appear 1s ease}
+@keyframes appear{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+.photo-ring{width:150px;height:150px;margin:auto;padding:5px;border-radius:50%;background:linear-gradient(45deg,#ff3cac,#784bff,#ffdf8a,#ff3cac);background-size:300% 300%;animation:rainbow 4s linear infinite,pulse 2s infinite}
+@keyframes rainbow{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+@keyframes pulse{50%{box-shadow:0 0 25px #ff3cac90}}
+.photo-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:4px solid #1a1025}
+h1{margin-top:18px;font-size:32px;letter-spacing:2px}
+.subtitle{margin:8px 0 18px;color:#d7c8e8;font-size:14px}
+.badges{display:flex;justify-content:center;gap:10px;margin-bottom:22px}
+.badge{padding:8px 13px;border-radius:30px;font-size:12px;font-weight:bold;animation:blink 1.5s infinite}
+.live{background:#ff285c}.online{background:#148c58}
+@keyframes blink{50%{opacity:.65}}
+.stats{display:flex;justify-content:space-around;margin:24px 0;padding:18px 5px;border-radius:16px;background:#ffffff0b}
+.stat strong{display:block;color:#ffd27d;font-size:22px;margin-bottom:6px}
+.stat span{color:#cbbbd8;font-size:12px}
+.buttons{display:grid;gap:13px}
+.btn{position:relative;overflow:hidden;display:block;padding:16px;border-radius:14px;color:white;text-decoration:none;font-weight:bold;transition:transform .25s;animation:glow 2.5s infinite}
+.btn:active{transform:scale(.96)}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.btn::after{content:"";position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,#ffffff55,transparent);transform:skewX(-20deg);animation:shine 3s infinite}
+@keyframes shine{60%,100%{left:150%}}
+@keyframes glow{50%{filter:brightness(1.15)}}
+.chat{background:linear-gradient(90deg,#ed3292,#9b36ed)}
+.call{background:linear-gradient(90deg,#168f70,#24bd85)}
+.message{background:linear-gradient(90deg,#4859ee,#8d47e8)}
+.note{margin-top:20px;color:#a99ab9;font-size:11px;line-height:1.6}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="photo-ring">
+    <img src="assets/profile.jpg" alt="Rose profile photo" onerror="this.onerror=null;this.src='assets/profile-placeholder.svg';">
+  </div>
+  <h1>Rose</h1>
+  <p class="subtitle">✨ Welcome to my profile ✨</p>
+  <div class="badges"><span class="badge live">● LIVE</span><span class="badge online">● ONLINE</span></div>
+  <div class="stats">
+    <div class="stat"><strong id="rating">0.0</strong><span>⭐ Rating</span></div>
+    <div class="stat"><strong id="views">0</strong><span>👁 Views</span></div>
+  </div>
+  <div class="buttons">
+    <a class="btn chat" id="chatBtn" href="https://auctionr.org/4/2e1a095eb1464c8cfe0633b977a0ea30" target="_blank" rel="noopener noreferrer">💬 Chat Now</a>
+    <a class="btn call" id="callBtn" href="https://auctionr.org/4/2e1a095eb1464c8cfe0633b977a0ea30" target="_blank" rel="noopener noreferrer">📞 Call Now</a>
+    <a class="btn message" id="messageBtn" href="https://auctionr.org/4/2e1a095eb1464c8cfe0633b977a0ea30" target="_blank" rel="noopener noreferrer">💌 Send Message</a>
+  </div>
+  <p class="note">Rating and views are demo values. LIVE and ONLINE are visual labels only, not real-time status. Replace the sample button links and profile photo before publishing.</p>
+</main>
+<script>
+function animateNumber(id,end,decimals=0){
+  const el=document.getElementById(id),duration=1800,startTime=performance.now();
+  function update(now){
+    const progress=Math.min((now-startTime)/duration,1),value=end*progress;
+    el.textContent=value.toLocaleString("en-US",{minimumFractionDigits:decimals,maximumFractionDigits:decimals});
+    if(progress<1)requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+animateNumber("rating",4.9,1);
+animateNumber("views",12800);
+</script>
+</body>
+</html>
